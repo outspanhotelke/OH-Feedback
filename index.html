@@ -135,7 +135,7 @@
 
   <script>
     // Replace /dev with the deployed Web App URL ending in /exec.
-    const SCRIPT_URL = "PASTE_YOUR_DEPLOYED_GOOGLE_APPS_SCRIPT_EXEC_URL_HERE";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyaWRtm09negvha4fO6sfAyiEd8q5GbTbwFql27dm-A4yprUMDpf7Ez2a1_8uitSrXovg/exec";
 
     const form = document.getElementById("feedbackForm");
     const message = document.getElementById("message");
@@ -177,11 +177,7 @@
         }
       }
 
-      if (!SCRIPT_URL.startsWith("https://script.google.com/macros/s/") || !SCRIPT_URL.endsWith("/exec")) {
-        message.textContent = "Please add your deployed Google Apps Script URL ending in /exec to the code.";
-        message.className = "error";
-        return;
-      }
+      // SCRIPT_URL is configured above. If the deployment URL changes, update it there.
 
       const feedback = {
         guestName: document.getElementById("guestName").value.trim(),
