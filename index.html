@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#24583e">
+  <title>Guest Feedback | The Outspan Hotel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="feedback-container">
+    <header>
+      <h1>The Outspan Hotel</h1>
+      <h2>Guest Feedback Form</h2>
+      <p>We value your feedback and look forward to improving your experience.</p>
+    </header>
+
+    <form id="feedbackForm">
+      <section>
+        <h3>1. Guest Contact Details</h3>
+        <label for="guestName">Name</label>
+        <input type="text" id="guestName" name="guestName" placeholder="Enter your name" autocomplete="name" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="0712345678" inputmode="tel" autocomplete="tel" pattern="[0-9+()\-\s]{7,20}" title="Enter a valid phone number">
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="example@domain.com" autocomplete="email">
+      </section>
+
+      <section>
+        <h3>2. Follow-up Contact</h3>
+        <p>Would you like us to contact you regarding your feedback?</p>
+        <div class="choice-options">
+          <label><input type="radio" name="followUp" value="Yes" required onchange="updateFollowUp()"> Yes</label>
+          <label><input type="radio" name="followUp" value="No" onchange="updateFollowUp()"> No</label>
+        </div>
+
+        <div id="contactPreference" class="hidden">
+          <label for="contactMethod">How would you prefer us to contact you?</label>
+          <select id="contactMethod" name="contactMethod">
+            <option value="">Select contact method</option>
+            <option value="Email">Email</option>
+            <option value="Phone">Phone Number</option>
+            <option value="Any">Any Method</option>
+          </select>
+          <p class="hint">Please provide the relevant contact details above.</p>
+        </div>
+      </section>
+
+      <section>
+        <h3>3. Your Feedback</h3>
+        <p>Please rate each area from 1 (Poor) to 5 (Excellent).</p>
+
+        <fieldset class="rating-group">
+          <legend>i. Overall Rating</legend>
+          <div class="rating-options">
+            <label><input type="radio" name="overallRating" value="1" required> 1 - Poor</label>
+            <label><input type="radio" name="overallRating" value="2"> 2 - Fair</label>
+            <label><input type="radio" name="overallRating" value="3"> 3 - Good</label>
+            <label><input type="radio" name="overallRating" value="4"> 4 - Very Good</label>
+            <label><input type="radio" name="overallRating" value="5"> 5 - Excellent</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="rating-group">
+          <legend>ii. Staff Attitude</legend>
+          <p>How would you rate the attitude and helpfulness of our staff?</p>
+          <div class="rating-options">
+            <label><input type="radio" name="staffAttitude" value="1" required> 1 - Poor</label>
+            <label><input type="radio" name="staffAttitude" value="2"> 2 - Fair</label>
+            <label><input type="radio" name="staffAttitude" value="3"> 3 - Good</label>
+            <label><input type="radio" name="staffAttitude" value="4"> 4 - Very Good</label>
+            <label><input type="radio" name="staffAttitude" value="5"> 5 - Excellent</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="rating-group">
+          <legend>iii. Cleanliness</legend>
+          <p>How would you rate cleanliness throughout the hotel?</p>
+          <div class="rating-options">
+            <label><input type="radio" name="cleanliness" value="1" required> 1 - Poor</label>
+            <label><input type="radio" name="cleanliness" value="2"> 2 - Fair</label>
+            <label><input type="radio" name="cleanliness" value="3"> 3 - Good</label>
+            <label><input type="radio" name="cleanliness" value="4"> 4 - Very Good</label>
+            <label><input type="radio" name="cleanliness" value="5"> 5 - Excellent</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="rating-group">
+          <legend>iv. Food Quality</legend>
+          <p>How would you rate the quality of our food?</p>
+          <div class="rating-options">
+            <label><input type="radio" name="foodQuality" value="1" required> 1 - Poor</label>
+            <label><input type="radio" name="foodQuality" value="2"> 2 - Fair</label>
+            <label><input type="radio" name="foodQuality" value="3"> 3 - Good</label>
+            <label><input type="radio" name="foodQuality" value="4"> 4 - Very Good</label>
+            <label><input type="radio" name="foodQuality" value="5"> 5 - Excellent</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="rating-group">
+          <legend>v. Room Service</legend>
+          <p>How would you rate the quality and promptness of room service?</p>
+          <div class="rating-options">
+            <label><input type="radio" name="roomService" value="1" required> 1 - Poor</label>
+            <label><input type="radio" name="roomService" value="2"> 2 - Fair</label>
+            <label><input type="radio" name="roomService" value="3"> 3 - Good</label>
+            <label><input type="radio" name="roomService" value="4"> 4 - Very Good</label>
+            <label><input type="radio" name="roomService" value="5"> 5 - Excellent</label>
+          </div>
+        </fieldset>
+
+        <label for="department">Area of service</label>
+        <select id="department" name="department">
+          <option value="">Select location of feedback concern</option>
+          <option value="Front Desk">Front Desk</option>
+          <option value="Gym">Gym</option>
+          <option value="Swimming Pool">Swimming Pool</option>
+          <option value="Restaurant">Restaurant</option>
+          <option value="Bar">Bar</option>
+          <option value="Room Service">Room Service</option>
+          <option value="Conference and Banqueting">Conference and Banqueting</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="comments">Compliments or areas for improvement</label>
+        <textarea id="comments" name="comments" rows="5" placeholder="Tell us what you liked or what we could improve."></textarea>
+      </section>
+
+      <button type="submit">Submit Feedback</button>
+      <p id="message" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <script>
+    // Replace /dev with the deployed Web App URL ending in /exec.
+    const SCRIPT_URL = "PASTE_YOUR_DEPLOYED_GOOGLE_APPS_SCRIPT_EXEC_URL_HERE";
+
+    const form = document.getElementById("feedbackForm");
+    const message = document.getElementById("message");
+    const submitButton = form.querySelector('button[type="submit"]');
+    const contactPreference = document.getElementById("contactPreference");
+    const contactMethod = document.getElementById("contactMethod");
+
+    function updateFollowUp() {
+      const selected = form.querySelector('input[name="followUp"]:checked');
+      const needsFollowUp = selected && selected.value === "Yes";
+      contactPreference.classList.toggle("hidden", !needsFollowUp);
+      contactMethod.required = Boolean(needsFollowUp);
+    }
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      message.textContent = "";
+      message.className = "";
+
+      if (!form.reportValidity()) return;
+
+      const followUp = form.querySelector('input[name="followUp"]:checked');
+      const method = contactMethod.value;
+      const phone = document.getElementById("phone").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      if (followUp.value === "Yes") {
+        if ((method === "Phone" || method === "Any") && !phone) {
+          message.textContent = "Please enter your phone number for follow-up.";
+          message.className = "error";
+          document.getElementById("phone").focus();
+          return;
+        }
+        if ((method === "Email" || method === "Any") && !email) {
+          message.textContent = "Please enter your email address for follow-up.";
+          message.className = "error";
+          document.getElementById("email").focus();
+          return;
+        }
+      }
+
+      if (!SCRIPT_URL.startsWith("https://script.google.com/macros/s/") || !SCRIPT_URL.endsWith("/exec")) {
+        message.textContent = "Please add your deployed Google Apps Script URL ending in /exec to the code.";
+        message.className = "error";
+        return;
+      }
+
+      const feedback = {
+        guestName: document.getElementById("guestName").value.trim(),
+        phone,
+        email,
+        overallRating: form.querySelector('input[name="overallRating"]:checked').value,
+        staffAttitude: form.querySelector('input[name="staffAttitude"]:checked').value,
+        cleanliness: form.querySelector('input[name="cleanliness"]:checked').value,
+        foodQuality: form.querySelector('input[name="foodQuality"]:checked').value,
+        roomService: form.querySelector('input[name="roomService"]:checked').value,
+        followUp: followUp.value,
+        contactMethod: followUp.value === "Yes" ? method : "Not required",
+        department: document.getElementById("department").value,
+        comments: document.getElementById("comments").value.trim()
+      };
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+      message.textContent = "Sending your feedback...";
+
+      try {
+        // no-cors prevents reading the response; it cannot confirm email delivery.
+        await fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=UTF-8" },
+          body: JSON.stringify(feedback)
+        });
+        message.textContent = "Thank you. Your feedback submission request has been sent.";
+        message.className = "success";
+        form.reset();
+        updateFollowUp();
+      } catch (error) {
+        message.textContent = "Unable to send feedback. Please try again or contact reception.";
+        message.className = "error";
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Feedback";
+      }
+    });
+
+    updateFollowUp();
+  </script>
+</body>
+</html>
